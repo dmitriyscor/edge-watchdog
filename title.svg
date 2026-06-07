@@ -1,0 +1,108 @@
+<svg width="800" height="140" viewBox="0 0 800 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style> 
+      text {
+        font-family: "Courier New", "Lucida Console", monospace;
+        font-weight: 900;
+        font-size: 58px;
+        letter-spacing: 2px;
+      }
+      .char { animation: bounce 2.4s cubic-bezier(0.37, 0, 0.63, 1) infinite; }
+      .c0  { animation-delay: 0.00s; fill: #e6edf3; }
+      .c1  { animation-delay: 0.06s; fill: #d2dce8; }
+      .c2  { animation-delay: 0.12s; fill: #b8c9de; }
+      .c3  { animation-delay: 0.18s; fill: #9ab3d3; }
+      .c4  { animation-delay: 0.30s; fill: #79a0cc; }
+      .c5  { animation-delay: 0.36s; fill: #58a6ff; }
+      .c6  { animation-delay: 0.42s; fill: #79a0cc; }
+      .c7  { animation-delay: 0.48s; fill: #9ab3d3; }
+      .c8  { animation-delay: 0.54s; fill: #b8c9de; }
+      .c9  { animation-delay: 0.60s; fill: #d2dce8; }
+      .c10 { animation-delay: 0.66s; fill: #e6edf3; }
+      .c11 { animation-delay: 0.72s; fill: #ffffff; }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0px);   }
+        30%       { transform: translateY(-18px); }
+        50%       { transform: translateY(0px);   }
+        60%       { transform: translateY(-6px);  }
+        75%       { transform: translateY(0px);   }
+      }
+      .dot {
+        animation: blink 1.2s step-start infinite;
+        fill: #58a6ff;
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+      .underline-bar {
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        from { opacity: 0.4; }
+        to   { opacity: 1;   }
+      }
+      .subtitle {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        fill: #58a6ff;
+        letter-spacing: 5px;
+        font-weight: 400;
+        opacity: 0.85;
+      }
+    </style>
+
+    <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="none"/>
+      <rect width="1" height="1" fill="#58a6ff" opacity="0.04"/>
+    </pattern>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-strong" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="800" height="140" fill="#0d1117" rx="10"/>
+  <rect width="800" height="140" fill="url(#grid)" rx="10"/>
+
+  <!--
+    Total text width estimate:
+    EDGE = 4 chars * ~38px = ~152px + 3 gaps
+    space = ~30px
+    WATCHDOG = 8 chars * ~38px = ~304px + 7 gaps
+    cursor rect = 8px + 6px gap
+    Total approx = 152 + 30 + 304 + 14 = ~530px
+    Center start x = (800 - 530) / 2 = 135
+  -->
+
+  <!-- E D G E -->
+  <text class="char c0" x="100" y="88" filter="url(#glow)">E</text>
+  <text class="char c1" x="140" y="88" filter="url(#glow)">D</text>
+  <text class="char c2" x="182" y="88" filter="url(#glow)">G</text>
+  <text class="char c3" x="225" y="88" filter="url(#glow)">E</text>
+
+  <!-- W A T C H D O G -->
+  <text class="char c4"  x="288" y="88" filter="url(#glow)">W</text>
+  <text class="char c5"  x="337" y="88" filter="url(#glow-strong)">A</text>
+  <text class="char c6"  x="377" y="88" filter="url(#glow)">T</text>
+  <text class="char c7"  x="413" y="88" filter="url(#glow)">C</text>
+  <text class="char c8"  x="453" y="88" filter="url(#glow)">H</text>
+  <text class="char c9"  x="495" y="88" filter="url(#glow)">D</text>
+  <text class="char c10" x="537" y="88" filter="url(#glow)">O</text>
+  <text class="char c11" x="579" y="88" filter="url(#glow-strong)">G</text>
+
+  <!-- blinking cursor — aligned to same baseline as letters (y=42 = 88-46) -->
+  <rect class="dot" x="625" y="42" width="8" height="46" rx="2" filter="url(#glow-strong)"/>
+
+  <!-- glowing underline centered under text -->
+  <rect class="underline-bar" x="100" y="100" width="533" height="2" rx="1" fill="#58a6ff" filter="url(#glow-strong)"/>
+
+  <!-- subtitle -->
+  <text class="subtitle" x="400" y="125" text-anchor="middle">REAL-TIME EDGE SECURITY SYSTEM</text>
+</svg>
