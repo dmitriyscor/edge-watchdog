@@ -1,6 +1,6 @@
-# Edge Watchdog
-
-> Real-time human detection and alarm system for edge devices
+<p align="center">
+  <img src="./title.svg" alt="Edge Watchdog" />
+</p>
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)
 ![YOLOv5](https://img.shields.io/badge/YOLOv5-Detection-red?style=flat-square)
