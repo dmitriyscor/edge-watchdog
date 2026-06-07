@@ -1,0 +1,43 @@
+<svg width="800" height="120" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P');
+      text {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 52px;
+        fill: white;
+        filter: drop-shadow(4px 4px 0px #58a6ff);
+      }
+      .l0  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.00s; }
+      .l1  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.07s; }
+      .l2  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.14s; }
+      .l3  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.21s; }
+      .l4  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.35s; }
+      .l5  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.42s; }
+      .l6  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.49s; }
+      .l7  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.56s; }
+      .l8  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.63s; }
+      .l9  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.70s; }
+      .l10 { animation: bounce 2s ease-in-out infinite; animation-delay: 0.77s; }
+      .l11 { animation: bounce 2s ease-in-out infinite; animation-delay: 0.84s; }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-14px); }
+      }
+    </style>
+    <rect width="800" height="120" fill="#0d1117"/>
+  </defs>
+  <rect width="800" height="120" fill="#0d1117"/>
+  <text class="l0"  x="30"  y="85">E</text>
+  <text class="l1"  x="80"  y="85">D</text>
+  <text class="l2"  x="130" y="85">G</text>
+  <text class="l3"  x="180" y="85">E</text>
+  <text class="l4"  x="260" y="85">W</text>
+  <text class="l5"  x="315" y="85">A</text>
+  <text class="l6"  x="365" y="85">T</text>
+  <text class="l7"  x="410" y="85">C</text>
+  <text class="l8"  x="460" y="85">H</text>
+  <text class="l9"  x="510" y="85">D</text>
+  <text class="l10" x="560" y="85">O</text>
+  <text class="l11" x="612" y="85">G</text>
+</svg>
