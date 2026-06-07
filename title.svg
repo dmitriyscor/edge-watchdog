@@ -1,43 +1,132 @@
-<svg width="800" height="120" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="140" viewBox="0 0 800 140" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P');
       text {
-        font-family: 'Press Start 2P', monospace;
-        font-size: 52px;
-        fill: white;
-        filter: drop-shadow(4px 4px 0px #58a6ff);
+        font-family: "Courier New", "Lucida Console", monospace;
+        font-weight: 900;
+        font-size: 58px;
+        letter-spacing: 2px;
       }
-      .l0  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.00s; }
-      .l1  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.07s; }
-      .l2  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.14s; }
-      .l3  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.21s; }
-      .l4  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.35s; }
-      .l5  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.42s; }
-      .l6  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.49s; }
-      .l7  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.56s; }
-      .l8  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.63s; }
-      .l9  { animation: bounce 2s ease-in-out infinite; animation-delay: 0.70s; }
-      .l10 { animation: bounce 2s ease-in-out infinite; animation-delay: 0.77s; }
-      .l11 { animation: bounce 2s ease-in-out infinite; animation-delay: 0.84s; }
+      .char {
+        animation: bounce 2.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+      }
+      .c0  { animation-delay: 0.00s; }
+      .c1  { animation-delay: 0.06s; }
+      .c2  { animation-delay: 0.12s; }
+      .c3  { animation-delay: 0.18s; }
+      .c4  { animation-delay: 0.30s; }
+      .c5  { animation-delay: 0.36s; }
+      .c6  { animation-delay: 0.42s; }
+      .c7  { animation-delay: 0.48s; }
+      .c8  { animation-delay: 0.54s; }
+      .c9  { animation-delay: 0.60s; }
+      .c10 { animation-delay: 0.66s; }
+      .c11 { animation-delay: 0.72s; }
       @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-14px); }
+        0%, 100% { transform: translateY(0px);   opacity: 1; }
+        30%       { transform: translateY(-18px); opacity: 1; }
+        50%       { transform: translateY(0px);   opacity: 1; }
+        60%       { transform: translateY(-6px);  opacity: 1; }
+        75%       { transform: translateY(0px);   opacity: 1; }
+      }
+
+      /* color cycling per letter */
+      .c0  { fill: #e6edf3; }
+      .c1  { fill: #d2dce8; }
+      .c2  { fill: #b8c9de; }
+      .c3  { fill: #9ab3d3; }
+      .c4  { fill: #79a0cc; }
+      .c5  { fill: #58a6ff; }
+      .c6  { fill: #79a0cc; }
+      .c7  { fill: #9ab3d3; }
+      .c8  { fill: #b8c9de; }
+      .c9  { fill: #d2dce8; }
+      .c10 { fill: #e6edf3; }
+      .c11 { fill: #ffffff; }
+
+      .shadow {
+        fill: none;
+        opacity: 0.18;
+      }
+      .dot {
+        animation: blink 1.2s step-start infinite;
+        fill: #58a6ff;
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+      .underline-bar {
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        from { opacity: 0.4; }
+        to   { opacity: 1;   }
+      }
+      .subtitle {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        fill: #58a6ff;
+        letter-spacing: 5px;
+        font-weight: 400;
+        opacity: 0.85;
       }
     </style>
-    <rect width="800" height="120" fill="#0d1117"/>
+
+    <!-- pixel grid pattern -->
+    <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="none"/>
+      <rect width="1" height="1" fill="#58a6ff" opacity="0.04"/>
+    </pattern>
+
+    <!-- glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- stronger glow for accent -->
+    <filter id="glow-strong" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="800" height="120" fill="#0d1117"/>
-  <text class="l0"  x="30"  y="85">E</text>
-  <text class="l1"  x="80"  y="85">D</text>
-  <text class="l2"  x="130" y="85">G</text>
-  <text class="l3"  x="180" y="85">E</text>
-  <text class="l4"  x="260" y="85">W</text>
-  <text class="l5"  x="315" y="85">A</text>
-  <text class="l6"  x="365" y="85">T</text>
-  <text class="l7"  x="410" y="85">C</text>
-  <text class="l8"  x="460" y="85">H</text>
-  <text class="l9"  x="510" y="85">D</text>
-  <text class="l10" x="560" y="85">O</text>
-  <text class="l11" x="612" y="85">G</text>
+
+  <!-- background -->
+  <rect width="800" height="140" fill="#0d1117" rx="10"/>
+  <rect width="800" height="140" fill="url(#grid)" rx="10"/>
+
+  <!-- subtle top-center radial glow -->
+  <ellipse cx="400" cy="60" rx="260" ry="55" fill="#58a6ff" opacity="0.04"/>
+
+  <!-- E D G E -->
+  <text class="char c0" x="68"  y="88" filter="url(#glow)">E</text>
+  <text class="char c1" x="108" y="88" filter="url(#glow)">D</text>
+  <text class="char c2" x="150" y="88" filter="url(#glow)">G</text>
+  <text class="char c3" x="193" y="88" filter="url(#glow)">E</text>
+
+  <!-- W A T C H D O G -->
+  <text class="char c4"  x="258" y="88" filter="url(#glow)">W</text>
+  <text class="char c5"  x="307" y="88" filter="url(#glow-strong)">A</text>
+  <text class="char c6"  x="347" y="88" filter="url(#glow)">T</text>
+  <text class="char c7"  x="383" y="88" filter="url(#glow)">C</text>
+  <text class="char c8"  x="423" y="88" filter="url(#glow)">H</text>
+  <text class="char c9"  x="465" y="88" filter="url(#glow)">D</text>
+  <text class="char c10" x="507" y="88" filter="url(#glow)">O</text>
+  <text class="char c11" x="549" y="88" filter="url(#glow-strong)">G</text>
+
+  <!-- blinking cursor -->
+  <rect class="dot" x="595" y="62" width="8" height="46" rx="2" filter="url(#glow-strong)"/>
+
+  <!-- glowing underline -->
+  <rect class="underline-bar" x="68" y="100" width="536" height="2" rx="1" fill="#58a6ff" filter="url(#glow-strong)"/>
+
+  <!-- subtitle -->
+  <text class="subtitle" x="400" y="125" text-anchor="middle">REAL-TIME EDGE SECURITY SYSTEM</text>
 </svg>
