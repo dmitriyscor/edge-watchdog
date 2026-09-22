@@ -25,29 +25,67 @@ The server has one responsibility: alarm control. When the server receives an im
 
 ## ⚙️ Setup
 
-### Edge Device
+The same scripts work on Windows, Linux, and macOS with Paho MQTT 2.x.
+Run these commands from the repository root, using your activated virtual environment.
 
-**Windows:**
-```bash
-python -m pip install paho-mqtt opencv-python sounddevice numpy ultralytics
+### Install and run
+
+**Windows (PowerShell):**
+```powershell
+python -m pip install -r server/requirements.txt
+python server/mqtt-broker.py
+# On the camera machine:
+python -m pip install -r edge/requirements.txt
+python edge/mqtt-client.py
 ```
 
-**Linux (Jetson Nano / Ubuntu):**
-```bash
-pip3 install paho-mqtt opencv-python sounddevice numpy ultralytics
+**Linux / macOS:**
+```sh
+python3 -m pip install -r server/requirements.txt
+python3 server/mqtt-broker.py
+# On the camera machine:
+python3 -m pip install -r edge/requirements.txt
+python3 edge/mqtt-client.py
 ```
 
-### Server
+The edge script selects DirectShow on Windows and OpenCV's default backend on
+Linux/macOS. Camera index defaults to **0** on all systems; set `CAMERA_INDEX=1`
+if your camera is device 1. Grant camera access to your terminal when prompted.
 
-**Windows:**
-```bash
-python -m pip install paho-mqtt
+### Optional settings
+
+| Variable | Default | Meaning |
+|----------|---------|---------|
+| `CAMERA_INDEX` | `0` | Camera device index; depends on your hardware |
+| `AUDIO_ENABLED` | `0` | Set to `1` to enable the local alarm speaker |
+| `HEADLESS` | `0` | Set to `1` to disable the preview window |
+| `MQTT_CLIENT_ID` | Generated per run | Optional explicit ID; must be unique per running process |
+
+Example for a second camera with audio:
+
+**Windows (PowerShell):**
+```powershell
+python -m pip install sounddevice numpy
+$env:CAMERA_INDEX = "1"
+$env:AUDIO_ENABLED = "1"
+python edge/mqtt-client.py
 ```
 
-**Linux:**
-```bash
-pip3 install paho-mqtt
+**Linux / macOS:**
+```sh
+python3 -m pip install sounddevice numpy
+CAMERA_INDEX=1 AUDIO_ENABLED=1 python3 edge/mqtt-client.py
 ```
+
+Audio is optional on every platform. Linux may additionally need its distribution's
+PortAudio runtime package. If audio initialization or playback fails, the client
+reports the problem and continues without sound. A Linux machine without a display
+should use `HEADLESS=1`. Press Ctrl+C to stop; `q` also exits the active preview
+when the client is not paused by an alarm.
+
+Run one alarm server and any number of edge clients. Photos are stored in
+`captured_photos` relative to the directory you run the command from.
+The server uses a plain-text reset prompt compatible with Windows terminals.
 
 ---
 
