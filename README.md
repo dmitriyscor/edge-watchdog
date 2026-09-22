@@ -103,13 +103,62 @@ For private deployments across different networks, use **[Hamachi VPN](https://v
 
 ---
 
-## Roadmap
+## Docker
 
-- [ ] Trigger video recording on all edge devices when alarm fires, to capture intruder footage
-- [ ] Customizable and improved alarm sounds
-- [ ] Server dashboard to monitor all connected edge devices on the network
+Install and start Docker before running these commands. Docker downloads
+the images automatically if they are not already available locally.
+Python and application dependencies are included.
 
----
+### Server
+
+```sh
+docker run -it --init --name edge-watchdog-server -v watchdog-photos:/data dmygzh/edge-watchdog-server:v1
+```
+
+Press **Enter** in the server terminal when prompted to reset an alarm.
+Detach without stopping the server using **Ctrl+P, then Ctrl+Q**.
+
+Photos persist in the `watchdog-photos` Docker volume.
+
+### Camera client — native Linux host
+
+Requires a camera available at `/dev/video0` and a compatible image
+architecture. Windows/macOS Docker Desktop webcam access requires
+additional configuration.
+
+```sh
+docker run -d --init --name edge-watchdog-edge --device=/dev/video0:/dev/video0 -v watchdog-edge-data:/data dmygzh/edge-watchdog-edge:v1
+```
+
+The client runs without a preview window or sound. Model weights download
+on first use, requiring internet access, and persist in `watchdog-edge-data`.
+
+View client output:
+
+```sh
+docker logs -f edge-watchdog-edge
+```
+
+### Stop and restart
+
+Stop the containers:
+
+```sh
+docker stop edge-watchdog-server
+docker stop edge-watchdog-edge
+```
+
+Restart existing containers instead of repeating `docker run`:
+
+```sh
+docker start -ai edge-watchdog-server
+docker start edge-watchdog-edge
+```
+
+### Current limitations
+
+Both applications use a public MQTT broker and shared alarm topics.
+Separate deployments are not isolated from each other.
 
 ## 📄 License
 

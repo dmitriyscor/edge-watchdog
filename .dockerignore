@@ -1,0 +1,9 @@
+# Only send the application source and dependency lists to the builder.
+**
+!Dockerfile
+!edge/
+!edge/mqtt-client.py
+!edge/requirements.txt
+!server/
+!server/mqtt-broker.py
+!server/requirements.txt

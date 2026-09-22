@@ -1,0 +1,32 @@
+services:
+  server:
+    build:
+      context: .
+      target: server
+    image: ${DOCKERHUB_USERNAME:-local}/edge-watchdog-server:${IMAGE_TAG:-v1}
+    init: true
+    stdin_open: true
+    tty: true
+    volumes:
+      - server-data:/data
+
+  # Starts only when explicitly selected, or with --profile edge.
+  edge:
+    profiles: [edge]
+    build:
+      context: .
+      target: edge
+    image: ${DOCKERHUB_USERNAME:-local}/edge-watchdog-edge:${IMAGE_TAG:-v1}
+    init: true
+    environment:
+      HEADLESS: "1"
+      AUDIO_ENABLED: "0"
+      CAMERA_INDEX: "0"
+    devices:
+      - ${CAMERA_DEVICE:-/dev/video0}:/dev/video0
+    volumes:
+      - edge-data:/data
+
+volumes:
+  server-data:
+  edge-data:
